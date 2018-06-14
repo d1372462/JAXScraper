@@ -1,6 +1,6 @@
 A simple, light-weight web crawler built on Jsoup and Xsoup with support for parallel processing, XPATH and predicates to gather html elements.
 ## Getting started ##
-You can use the JAXScraper by including the jar file as a dependancy, or cloning down the git repo. A simple web-crawl/scrape can be done in a few lines:
+You can use the JAXScraper by including the jar file as a dependancy, or by downloading the source-code (zip file above). A simple web-crawl/scrape can be done in a few lines:
 ```java
 ResultDictionary imageUrls = new ResultDictionary();
         new Scraper()
