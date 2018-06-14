@@ -76,8 +76,8 @@ Multiple queries can also be specified:
 ```java
 	new Scraper()
                 .addPageConsumer(rootElement -> imgElements.addAll(rootElement.getElementsByTag("img")))
-                .addDoFollow("//div[@id=\"div1\"]/a/@href")
-		.addDoFollow("//div[@id=\"div2\"]/a/@href")
+                .addDoFollow("//div[@id=\"div1\"]//a/@href")
+		.addDoFollow("//div[@id=\"div2\"]//a/@href")
                 .setMaxDepth(2)
                 .run("http://vg.no");
 ```
@@ -87,8 +87,7 @@ By default, a set of visited urls are stored in memory, and urls are only visite
 ```java
 	new Scraper()
                 .addPageConsumer(rootElement -> imgElements.addAll(rootElement.getElementsByTag("img")))
-                .addDoFollow(url -> url.endsWith("/"))
-	        .addDoFollow(url -> url.length() < 10)
+                .addDoFollow(url -> true)
                 .setMaxDepth(2)
 		.setDontRepeat(false) // set dontRepeat to true or false here
                 .run("http://vg.no");
