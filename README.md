@@ -63,3 +63,16 @@ The scraper will evaluate each link-follower added, and use the predicate to det
                 .run("http://vg.no");
 ```
 In this case, the scraper will follow all links less than 10 characters in length, AND all urls that ends with "/". The "do follow" rules are evaluated in order, such that the scraper will first follow all urls that ends with "/", and then follow all urls who's length is less than 10 characters.
+
+### Repeating urls ###
+By default, a set of visited urls are stored in memory, and urls are only visited once, and not repeated. This is to prevent infinite link-loops in the case where A links to B and B links back to A, or any case where a loop in the linking graph exists. This can be controlled by setting dontRepeat:
+```java
+	new Scraper()
+                .addPageConsumer(rootElement -> imgElements.addAll(rootElement.getElementsByTag("img")))
+                .addDoFollow(url -> url.endsWith("/"))
+	        .addDoFollow(url -> url.length() < 10)
+                .setMaxDepth(2)
+		.setDontRepeat(false) // set dontRepeat to true or false here
+                .run("http://vg.no");
+```
+In the above example, dontRepeat is set to false, and pages may be visited more than once if loops exist in the link-graph.  If set to true, pages are only visited once.
