@@ -75,4 +75,4 @@ By default, a set of visited urls are stored in memory, and urls are only visite
 		.setDontRepeat(false) // set dontRepeat to true or false here
                 .run("http://vg.no");
 ```
-In the above example, dontRepeat is set to false, and pages may be visited more than once if loops exist in the link-graph.  If set to true, pages are only visited once.
+In the above example, dontRepeat is set to false, and pages may be visited more than once if loops exist in the link-graph.  If set to true, pages are only visited once.  (dontRepeat is true by default to prevent infinite loops)
