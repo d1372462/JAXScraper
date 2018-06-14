@@ -72,6 +72,16 @@ You can also specify which links to follow by using one or more XPath/Xsoup quer
                 .setMaxDepth(2)
                 .run("http://vg.no");
 ```
+Multiple queries can also be specified:
+```java
+	new Scraper()
+                .addPageConsumer(rootElement -> imgElements.addAll(rootElement.getElementsByTag("img")))
+                .addDoFollow("//div[@id="div1"]/a/@href")
+		.addDoFollow("//div[@id="div2"]/a/@href")
+                .setMaxDepth(2)
+                .run("http://vg.no");
+```
+In this case, all links from @id="div1" will be followed frist, then all links from div: @id="div2"
 ### Repeating urls ###
 By default, a set of visited urls are stored in memory, and urls are only visited once, and not repeated. This is to prevent infinite link-loops in the case where A links to B and B links back to A, or any case where a loop in the linking graph exists. This can be controlled by setting dontRepeat:
 ```java
