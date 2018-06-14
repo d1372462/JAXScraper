@@ -18,7 +18,7 @@ ResultDictionary imageUrls = new ResultDictionary();
                 .addExtractor(new XSoupExtractor("//img/@src"), imageUrls)
                 .addDoFollow(url -> true)
                 .setMaxDepth(2)
-		            .setUseParallel(true)
+		.setUseParallel(true)
                 .run("http://vg.no");
 ```
 When set to true, each child-url (branch) from each page will be processed in parallel. Enabling parallel-processing can greatly increase speed, but does not guarantee the order in which the results will appear in the result-set. This is because, in parallel mode, several pages may be processed simountanously, and the results are added to the resultset as soon as discovered. Thus, the order will depend on the order in which pages complete/pageload of pages, which will be arbitrary.
