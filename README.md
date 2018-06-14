@@ -99,8 +99,8 @@ You can easily manipulate the JSoup connection before each page by setting a con
 ```java
 	new Scraper()
 	       .setConnectionMiddleware(connection ->
-                                connection.timeout(5000)
-                                .userAgent("Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6"))
+                       connection.timeout(5000)
+                        .userAgent("Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6"))
                 .addPageConsumer(rootElement -> imgElements.addAll(rootElement.getElementsByTag("img")))
                 .addDoFollow("//div[@id=\"div1\"]//a/@href")
                 .setMaxDepth(2)
