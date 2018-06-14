@@ -64,6 +64,14 @@ The scraper will evaluate each link-follower added, and use the predicate to det
 ```
 In this case, the scraper will follow all links less than 10 characters in length, AND all urls that ends with "/". The "do follow" rules are evaluated in order, such that the scraper will first follow all urls that ends with "/", and then follow all urls who's length is less than 10 characters.
 
+You can also specify which links to follow by using one or more XPath/Xsoup queries:
+```java
+	new Scraper()
+                .addPageConsumer(rootElement -> imgElements.addAll(rootElement.getElementsByTag("img")))
+                .addDoFollow("//a/@href") // all urls rersulting from the xpath query will be followed
+                .setMaxDepth(2)
+                .run("http://vg.no");
+```
 ### Repeating urls ###
 By default, a set of visited urls are stored in memory, and urls are only visited once, and not repeated. This is to prevent infinite link-loops in the case where A links to B and B links back to A, or any case where a loop in the linking graph exists. This can be controlled by setting dontRepeat:
 ```java
