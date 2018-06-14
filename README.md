@@ -76,8 +76,8 @@ Multiple queries can also be specified:
 ```java
 	new Scraper()
                 .addPageConsumer(rootElement -> imgElements.addAll(rootElement.getElementsByTag("img")))
-                .addDoFollow("//div[@id="div1"]/a/@href")
-		.addDoFollow("//div[@id="div2"]/a/@href")
+                .addDoFollow("//div[@id=\"div1\"]/a/@href")
+		.addDoFollow("//div[@id=\"div2\"]/a/@href")
                 .setMaxDepth(2)
                 .run("http://vg.no");
 ```
