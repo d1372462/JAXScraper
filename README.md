@@ -11,8 +11,8 @@ ResultDictionary imageUrls = new ResultDictionary();
 ```
 In this example, the scraper runs a Breadth-First web-crawl, and extracts all image urls from all pages visited, and stores them in the imageUrls result-dictionary. A couple of special classes are used in this example: the  ResultDictionary class provides an abstract, easy way of storing results. Results are stored as mapping from origin url -> list of results from given url.  The XSoupExtractor class provides an easy way to extract elements from each page by specifying an XPATH query that will be executed on each page visited, and the result is passed to the ResultDictionary. Max depth is set to 2 levels, and the scraping is started by calling the run("url here...") method.
 ### Parallel processing: ###
-```java
 To use parallel-processing, simply use the setUseParallel() setter:
+```java
 ResultDictionary imageUrls = new ResultDictionary();
         new Scraper()
                 .addExtractor(new XSoupExtractor("//img/@src"), imageUrls)
