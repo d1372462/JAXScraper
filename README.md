@@ -62,7 +62,7 @@ The scraper will evaluate each link-follower added, and use the predicate to det
                 .setMaxDepth(2)
                 .run("http://vg.no");
 ```
-In this case, the scraper will follow all links less than 10 characters in length, AND all urls that ends with "/". The "do follow" rules are evaluated in order, such that the scraper will first follow all urls that ends with "/", and then follow all urls who's length is less than 10 characters.
+In this case, the scraper will follow all links less than 10 characters in length, AND all urls that ends with "/". The "do follow" rules are evaluated in order, unless parallel mode is enabled, in which case they will be evaluated in parallel, and the order may be arbitrary. In sequential mode, scraper will first follow all urls that ends with "/", and then follow all urls who's length is less than 10 characters.
 
 You can also specify which links to follow by using one or more XPath/Xsoup queries:
 ```java
