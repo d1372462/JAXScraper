@@ -93,3 +93,16 @@ By default, a set of visited urls are stored in memory, and urls are only visite
                 .run("http://vg.no");
 ```
 In the above example, dontRepeat is set to false, and pages may be visited more than once if loops exist in the link-graph.  If set to true, pages are only visited once.  (dontRepeat is true by default to prevent infinite loops)
+
+### Connection ###
+You can easily manipulate the JSoup connection before each page by setting a connection-middleware:
+```java
+	new Scraper()
+	       .setConnectionMiddleware(connection ->
+                                connection.timeout(5000)
+                                .userAgent("Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6"))
+                .addPageConsumer(rootElement -> imgElements.addAll(rootElement.getElementsByTag("img")))
+                .addDoFollow("//div[@id=\"div1\"]//a/@href")
+                .setMaxDepth(2)
+                .run("http://vg.no");
+```
